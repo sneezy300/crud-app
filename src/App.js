@@ -11,35 +11,24 @@ class App extends Component {
     this.state = {
       users: [
         {
-          name: "Nan Antwi",
-          email: "sneezy300@gmail.com",
-          gen: 12,
-          id: "vbb1"
+          name: "Nana  Antwi",
+          email: "sneezy300@gmail.com"
+          gen: 12
+          id: "f7t7ty"
         },
         {
-          name: "Obiribea",
-          email: "yaaob@gmail.com",
-          gen: 11,
-          id: "jjfh4"
+          name: "Obiri yaa",
+          email: "yaaobiri@gmail.com"
+          gen: 13
+          id: "f7t7"
         },
         {
-          name: "granny",
-          email: "grannyk@gmail.com",
-          gen: 15,
-          id: "ytr6"
+          name: "Nana sarfo",
+          email: "sneezy300@gmail.com"
+          gen: 15
+          id: "ghf6"
         },
-        {
-          name: "maggie",
-          email: "magg@gmail.com",
-          gen: 12,
-          id: "xfr5"
-        },
-        {
-          name: "Agingo",
-          email: "Aduahgg@gmail.com",
-          gen: 15,
-          id: "ni7"
-        },
+
       ]
     }
   }

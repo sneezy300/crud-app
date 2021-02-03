@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap";
+import { editUser } from "../store/usersActions";
 
 class EditUserForm extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class EditUserForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.editUser(this.state.id, this.state);
+    this.props.updateUser(this.state);
     this.setState({
       name: "",
       email: "",
@@ -40,34 +42,25 @@ class EditUserForm extends Component {
             onChange={this.handleChange}
           />
         </Form.Group>
+
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Phone</Form.Label>
+          <Form.Label>emmail address</Form.Label>
           <Form.Control
-            type="phone"
-            placeholder="Enter number"
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Address</Form.Label>
-          <Form.Control
-            type="address"
-            placeholder="Enter address"
-            name="address"
-            value={this.state.address}
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={this.state.email}
             onChange={this.handleChange}
           />
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label>tpye</Form.Label>
+          <Form.Label>Gen</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Type"
-            name="type"
-            value={this.state.type}
+            type="number"
+            placeholder="gen"
+            name="gen"
+            value={this.state.gen}
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -78,5 +71,8 @@ class EditUserForm extends Component {
     );
   }
 }
+const mapDispatchToProps = {
+  updateUser: editUser,
+};
 
-export default EditUserForm;
+export default connect(null, mapDispatchToProps)(EditUserForm);

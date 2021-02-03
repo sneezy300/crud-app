@@ -6,14 +6,16 @@ import * as serviceWorker from './serviceWorker';
 import usersReducer from "./store/usersReducer"
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
-import { provider } from 'react-redux'
+import { Provider } from 'react-redux'
 
 const store = createStore(usersReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <provider store={store}>
-    <App />
-  </provider>
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Modal } from "react-bootstrap";
+import { connect } from "react-redux";
+import { deleteUser } from "../store/usersActions";
 import EditUserForm from "./EditUserForm";
 
 const User = (props) => {
@@ -9,7 +11,7 @@ const User = (props) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    props.deleteUser(props.userInfo.id);
+    props.removeUser(props.userInfo.id);
   };
   return (
     <>
@@ -18,11 +20,7 @@ const User = (props) => {
           <Modal.Title>Edit User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditUserForm
-            userInfo={props.userInfo}
-            editUser={props.editUser}
-            closeModal={handleClose}
-          />
+          <EditUserForm userInfo={props.userInfo} closeModal={handleClose} />
         </Modal.Body>
       </Modal>
 
@@ -32,17 +30,17 @@ const User = (props) => {
             <Card.Subtitle className="mb-2 text-muted">
               Codetrain User
             </Card.Subtitle>
-            <Card.Title>{props.userInfo.name}/Card.Title>
+            <Card.Title>{props.userInfo.name}</Card.Title>
             <Card.Text>
               <p>Email: {props.userInfo.email}</p>
               <p>Gen: {props.userInfo.gen}</p>
             </Card.Text>
             <Card.Link href="#" onClick={handleShow}>
-              Edit 
+              Edit
             </Card.Link>
             <Card.Link href="#">
               <Button variant="danger" size="sm" onClick={handleDelete}>
-                Delete 
+                Delete
               </Button>
             </Card.Link>
           </Card.Body>
@@ -52,4 +50,8 @@ const User = (props) => {
   );
 };
 
-export default User;
+const mapDispatchToProps = {
+  removeUser: deleteUser,
+};
+
+export default connect(null, mapDispatchToProps)(User);
